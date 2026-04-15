@@ -10,11 +10,11 @@ audience = st.text_input("Audience")
 if st.button("Generate Content"):
     prompt = f"Write marketing content for {product} targeting {audience}."
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": prompt}]
+      model="llama-3.3-70b-versatile",
+      messages=[{"role": "user", "content": prompt}]
     )
     st.session_state.text = response.choices[0].message.content
-    text =response.choices[0].message.content
+    text = response.choices[0].message.content
     st.write(text)
 if "text" in st.session_state:
     content = st.text_area("Generated Content", st.session_state.text, height=300)
@@ -23,6 +23,6 @@ if "text" in st.session_state:
             data=content,
             file_name="marketing_copy.txt",
             mime="text/plain"
-        )
+         )
     else:
         st.info("Generate content first")
